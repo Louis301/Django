@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Редактирование записи</title>
+</head>
+<body>
+    <h1>Редактирование записи о книге</h1>
+
+    <form action="{% url 'edit_book' book_for_edit.id %}" method="post">
+        {% csrf_token %}
+        
+        <p>
+            <label for="book_title">Название</label>
+            <input type="text" name="book_title" value="{{book_for_edit.title}}" required>
+        </p>
+
+        <p>
+            <label for="book_author">Автор</label>
+            <input type="text" name="book_author" value="{{book_for_edit.author}}" required>
+        </p>
+
+        <p><textarea name="book_discription" cols="30" rows="10" placeholder="Описание" required>{{book_for_edit.discription}}</textarea></p>
+
+        <label>
+            <p>Жанр</p>
+            {% for book_style in all_book_styles %}
+                {% if book_style in selected_book_styles %}
+                    <input type="checkbox" name="book_style[]" value="{{book_style}}" checked><span>{{book_style}}</span><br>
+                {% else %}
+                    <input type="checkbox" name="book_style[]" value="{{book_style}}"><span>{{book_style}}</span><br>
+                {% endif %}
+            {% endfor %}
+        </label>
+
+        <label>
+            <p>Возрастное ограничение</p>
+            {% for age_ristriction in all_age_ristrictions %}
+                {% if age_ristriction == book_for_edit.age_restriction %}
+                    <input type="radio" name="book_age_restriction" value="{{age_ristriction}}" checked><span>{{age_ristriction}}</span> 
+                {% else %}
+                    <input type="radio" name="book_age_restriction" value="{{age_ristriction}}"><span>{{age_ristriction}}</span> 
+                {% endif %}
+            {% endfor %}
+        </label>
+        
+        <p><input type="submit" name="edit_book" value="Редактировать"></p>
+
+    </form>
+
+    <p><a href="{% url 'home' %}">На главную</a></p>
+    <p><a href="{% url 'book_list' %}">Все книги</a></p>
+    
+</body>
+</html>
