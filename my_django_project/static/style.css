@@ -1,0 +1,300 @@
+
+/* definition */
+@font-face {
+    font-family: Konstruktor;
+    src: url('fonts/KonstruktorRegular.otf');
+    src: url('fonts/KonstruktorRegular.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+body {
+    background-color: black;
+    font-family: Konstruktor;
+    letter-spacing: 3px;
+}
+.container {
+    position: absolute;
+    margin-top: 30px;
+    width: 80%;
+    left: 10%;
+    right: 10%;
+    border: 1px solid white;
+}
+.title {
+    width: 120%;
+    left: -10%;
+    position: relative;
+    background: #C91A1A;
+    padding-top: 15px;
+    margin-top: 40px;
+    text-align: center;
+    font-size: 35px;
+}
+.content {
+    position: relative;
+    padding-top: 40px;
+    padding-bottom: 100px;
+    width: 80%;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+
+.home-menu-item {
+    display: inline-block;
+    padding: 10px;
+    color: white;
+    font-size: 22px;
+    text-decoration: none;
+}
+.home-menu {
+    list-style-type: none;
+    margin-left: 0;
+    padding-left: 0;
+    transform: translateX(-10px);
+}
+.home-menu-item:hover {
+    color: #C91A1A;
+    /* border: 1px solid #C91A1A; */
+}
+
+
+
+.form-input-field {
+    border: 2px solid white;
+    background-color: black;
+    position: relative;
+    margin-top: 30px;
+    width: 100%;
+    padding-left: 10px;
+    padding-top: 12px;
+    padding-bottom: 5px;
+    color: white;
+    font-family: Konstruktor;
+    font-size: 18px;
+    transform: translateX(-7px);
+    letter-spacing: 2px;
+}
+.form-input-field::placeholder {
+    color: #565050;
+}
+
+
+.form-selection-panel {
+    font-size: 18px;
+    margin-top: 30px;
+    color:#565050;
+    border: 2px solid white;
+    padding: 30px;
+    padding-top: 16px;
+}
+.form-selection-panel-title {
+    color: white;
+    text-align: center;
+    padding: 6px 6px;
+    font-size: 22px;
+    transform: translateY(5px);
+}
+
+
+
+/* -------------------------------------------------------------------- */
+.custom-checkbox {
+    display: inline-flex;
+    align-items: center;
+    user-select: none;
+}
+.custom-checkbox::before {
+    content: '';
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    flex-shrink: 0;
+    flex-grow: 0;
+    border: 2px solid #565050;
+    background-color: black;
+    margin-right: 0.5em;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 100% 100%;
+}
+/* При наведении */
+.custom-checkbox:not(:disabled):not(:checked):hover::before {
+    border: 2px solid white;
+}
+/* При выборе  */
+.custom-checkbox:checked::before {
+    background-image: url("img/check_mark.svg");
+}
+.form-selection-panel-item {
+    margin: 2px;
+}
+
+
+
+/* ---------------------------------------------------------- */
+/* для элемента label связанного с .custom-radio */
+.custom-radio {
+    display: inline-flex;
+    align-items: center;
+    user-select: none;
+}
+/* создание в label псевдоэлемента  before со следующими стилями */
+.custom-radio::before {
+    content: '';
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    flex-shrink: 0;
+    flex-grow: 0;
+    border: 2px solid #565050;
+    background-color: black;
+    border-radius: 50%;
+    margin-right: 0.5em;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 100% 100%;
+}
+/* стили при наведении курсора на радио */
+.custom-radio:not(:disabled):not(:checked):hover::before {
+    border-color: white;
+}
+/* стили для радиокнопки, находящейся в состоянии checked */
+.custom-radio:checked::before {
+    background-image: url("img/check_mark.svg");
+}
+
+
+.form-selection-panel-apply {
+    margin-top: 30px;
+    font-size: 22px;
+    font-family: Konstruktor;
+    border: 2px solid white;
+    background-color: black;
+    color: white;
+    padding-top: 10px;
+    padding-left: 6px;
+    padding-right: 6px;
+}
+.form-selection-panel-apply:hover {
+    color: #C91A1A;
+    border: 2px solid #C91A1A;
+    cursor: pointer;
+}
+
+
+
+.book-entry {
+    position: relative;
+    color: white;
+    border: 1px solid white;
+    margin-top: 30px;
+    padding: 20px;
+    /* width: 100%; */
+}
+.book-list {
+    display: inline-block;
+    width: 500px;
+}
+.content table tr td {
+    width: 50%;
+}
+                        
+
+
+.book-title {
+    font-size: 26px;
+    display: inline-block;
+}
+.book-author {
+    font-size: 20px;
+    display: inline-block;
+
+}
+.book-selection-parameters {
+    font-size: 20px;
+    margin-top: 20px;
+}
+.book-discription {
+    font-size: 16px;
+    margin-top: 38px;
+    margin-bottom: 38px;
+    margin-left: 5px;
+    width: 100%;
+}
+.edit-button {
+    display: inline-block;
+    text-decoration: none;
+    color: #565050;
+}
+.delete-button {
+    display: inline-block;
+    margin-left: 25px;
+    text-decoration: none;
+    color: #C91A1A;
+    margin-bottom: 10px;
+}
+.edit-button:hover {
+    color: aquamarine;
+}
+.delete-button:hover {
+    color: darkred;
+}
+
+
+
+.book-filter {
+    position: fixed;
+    transform: translateX(20%) translateY(-5%);
+    width: 23%;
+}
+.book-filter-age-ristrictions {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.book-filter-button-apply {
+    font-family: Konstruktor;
+    color: white;
+    background-color: black;
+    font-size: 16px;
+    border: none;
+    letter-spacing: 3px;
+}
+.book-filter-button-apply:hover {
+    cursor: pointer;
+    color: aquamarine;
+}
+.book-filter-button-reset {
+    font-family: Konstruktor;
+    color: #C91A1A;
+    background-color: black;
+    font-size: 16px;
+    border: none;
+    letter-spacing: 3px;
+    margin-left: 40px;
+}
+.book-filter-button-reset:hover {
+    cursor: pointer;
+    color: darkred;
+}
+
+
+
+.button-to-home {
+    color: white;
+    font-size: 22px;
+    text-decoration: none;
+    margin-top: 20px;
+    text-align: center;
+}
+.button-to-home:hover {
+    color: #C91A1A;
+}
+
+
+.book-entry h1 {
+    margin: 40px;
+}
+

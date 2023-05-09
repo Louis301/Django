@@ -1,16 +1,27 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
     <title>Главная</title>
 </head>
-<body>
-    <h1>Библиотека</h1>
 
-    <p><a href="{% url 'add_book' %}">Добавить книгу</a></p>
-    <p><a href="{% url 'book_list' %}">Отобразить список книг</a></p>
+<body>
+    <div class="container">
+        <div class="title">Библиотека</div>
+
+        <div class="content">
+            <ul class="home-menu">
+                <li><a class="home-menu-item" href="{% url 'add_book' %}">Добавить книгу</a></li>
+                <li><a class="home-menu-item" href="{% url 'book_list' %}">Отобразить список книг</a></li>
+            </ul>
+        </div>
+
+    </div>  <!-- container -->
 
 </body>
 </html>

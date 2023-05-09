@@ -1,78 +1,90 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
     <title>Просмотр всех записей</title>
 </head>
 <body>
 
-    <style>
-        .book_list {
-            display: inline-block;
-        }
-        .book_filters {
-            display: inline-block;
-        }
-    </style>
+    <div class="container">
+        <div class="title">Все книги</div>
 
-    <h1>Все книги</h1>
+        <div class="content">
+            <table>
+                <tr>
+                    <td>
+                        <div class="book-list">
+                            {% if book_list %}
+                                {% for book in book_list %}
+                                    <div class="book-entry">
+                                        <div class="book-title">{{book.title}}</div>
+                                        <div class="book-author">({{book.author}})</div>
+                                        <div class="book-selection-parameters">{{book.style}}, {{book.age_restriction}}</div>
+                                        <div class="book-discription">{{book.discription}}</div>
+                                        
+                                        <a class="edit-button" href="{% url 'edit_book' book.id %}">Редактировать</a>
+                                        <a class="delete-button" href="{% url 'delete_book' book.id %}">Удалить</a>
+                                    </div>
+                                {% endfor %}
+                            {% else %}    
+                                <div class="book-entry">
+                                    <h1>По вашему запросу ничего не найдено</h1>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </td>
 
-    <div class="book_list">
-        {% if book_list %}
-            {% for book in book_list %}
-                <fieldset>
-                    <legend>{{book.title}} ({{book.author}})</legend>
-                    <p>{{book.style}}, {{book.age_restriction}}</p>
-                    <p>{{book.discription}}</p>
-
-                    <p><a href="{% url 'edit_book' book.id %}">Редактировать</a></p>
-                    <p><a href="{% url 'delete_book' book.id %}">Удалить</a></p>
+                    <td style="vertical-align: top;" >
+                        <div class="book-filter">
+                            <fieldset class="form-selection-panel">
+                                <legend class="form-selection-panel-title">Фильтры</legend>
+                                
+                                <form action="{% url 'book_list' %}" method="post">
+                                    {% csrf_token %}
+                        
+                                    {% for book_style in all_book_styles %}
+                                        <div class="form-selection-panel-item">
+                                            {% if book_style in selected_book_styles %}
+                                                <input type="checkbox" class="custom-checkbox" name="book_style[]" value="{{book_style}}" checked>
+                                            {% else %}
+                                                <input type="checkbox" class="custom-checkbox" name="book_style[]" value="{{book_style}}">
+                                            {% endif %}
+                                            <span>{{book_style}}</span>
+                                        </div>
+                                    {% endfor %}
                 
-                </fieldset>
-            {% endfor %}
-        {% else %}    
-            <p>Книги не найдены</p>
-        {% endif %}
-    </div>
+                                    <div class="book-filter-age-ristrictions">
+                                        {% for age_ristriction in all_age_ristrictions %}
+                                            {% if age_ristriction == book_for_edit.age_restriction %}
+                                                <input type="radio" class="custom-radio" name="book_age_restriction" value="{{age_ristriction}}" checked>
+                                            {% else %}
+                                                <input type="radio" class="custom-radio" name="book_age_restriction" value="{{age_ristriction}}">
+                                            {% endif %}
+                                            <span>{{age_ristriction}}</span> 
+                                        {% endfor %}
+                                    </div>
+                
+                                    <input class="book-filter-button-apply" type="submit" name="apply_filters" value="Применить">
+                                    <input class="book-filter-button-reset" type="submit" name="reset" value="Сброс">
+                                </form>
+                
+                            </fieldset>
+                        
+                            <div class="button-to-home"><a class="home-menu-item" href="{% url 'home' %}">На главную</a></div>
 
-
-    <div class="book_filters">
-        <h2>Фильтры</h2>
-
-        <form action="{% url 'book_list' %}" method="post">
-            {% csrf_token %}
-
-            <label>
-                <p>Жанр</p>
-                {% for book_style in all_book_styles %}
-                    {% if book_style in selected_book_styles %}
-                        <input type="checkbox" name="book_style[]" value="{{book_style}}" checked><span>{{book_style}}</span><br>
-                    {% else %}
-                        <input type="checkbox" name="book_style[]" value="{{book_style}}"><span>{{book_style}}</span><br>
-                    {% endif %}
-                {% endfor %}
-            </label>
+                        </div>  <!-- book-filter -->
+                    </td>
+                </tr>
+            </table>
     
-            <label>
-                <p>Возрастное ограничение</p>
-                {% for age_ristriction in all_age_ristrictions %}
-                    {% if age_ristriction == selected_age_restriction %}
-                        <input type="radio" name="book_age_restriction" value="{{age_ristriction}}" checked><span>{{age_ristriction}}</span> 
-                    {% else %}
-                        <input type="radio" name="book_age_restriction" value="{{age_ristriction}}"><span>{{age_ristriction}}</span> 
-                    {% endif %}
-                {% endfor %}
-            </label>
+        </div>  <!-- content -->
 
-            <p><input type="submit" name="apply_filters" value="Применить"></p>
-            <p><input type="submit" name="reset" value="Сброс"></p>
-        </form>
-    </div>
-
-    
-    <p><a href="{% url 'home' %}">На главную</a></p>
+    </div>  <!-- container -->
 
 </body>
 </html>

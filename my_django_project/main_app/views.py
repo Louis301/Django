@@ -5,18 +5,18 @@ from django.urls import reverse
 
 
 all_book_styles = [
-         'Историческая',
-         'Военная',
-         'Научная фантастика',
-         'Художественная',
-         'Образование',
-    ]
+    'Историческая',
+    'Военная',
+    'Научная фантастика',
+    'Художественная',
+    'Образование'
+]
 
 all_age_ristrictions = [
-        '6+',
-        '12+',
-        '16+',
-        '18+'
+    '6+',
+    '12+',
+    '16+',
+    '18+'
 ]
 
 
@@ -102,9 +102,3 @@ def edit_book(request, book_id):
 def delete_book(request, book_id):
     Book.objects.get(id=book_id).delete() 
     return render(request, 'book_list.html', context={ 'book_list' : Book.objects.all(), 'all_book_styles' : all_book_styles, 'all_age_ristrictions' : all_age_ristrictions})
-
-
-# def tasks(request):
-    # Task.objects.create(title=request.POST['task_title'], performer=request.POST['task_performer'], discription=request.POST['task_discription'])
-    # return HttpResponseRedirect(reverse('tasks', args=(Task.objects.all(), )))
-    # return render(request, 'tasks.html', context={ 'tasks' : Task.objects.all() })

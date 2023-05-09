@@ -1,49 +1,64 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
     <title>Добавление записи</title>
 </head>
+
 <body>
-    <h1>Добавление книги</h1>
+    <div class="container">
+        <div class="title">Добавление книги</div>
 
-    <form action="{% url 'add_book' %}" method="post">
-        {% csrf_token %}
+        <!-- <div class="edit-entry-content"> -->
+        <div class="content">
+            <form action="{% url 'add_book' %}" method="post">
+                {% csrf_token %}
+                
+                <input class="form-input-field" type="text" name="book_title" placeholder="Название" required>
+                <br>
+                <input class="form-input-field" type="text" name="book_author" placeholder="Автор" required>
+                <br>
+                <textarea class="form-input-field" name="book_discription" cols="30" rows="7" placeholder="Описание" required></textarea>
+                <br>
+
+                <fieldset class="form-selection-panel">
+                    <legend class="form-selection-panel-title">Жанр</legend>
+                    {% for book_style in all_book_styles %}
+                        <div class="form-selection-panel-item">
+                            <input type="checkbox" class="custom-checkbox" name="book_style[]" value="{{book_style}}">
+                            <span>{{book_style}}</span>
+                        </div>
+                    {% endfor %}
+                </fieldset>
+
+                <fieldset class="form-selection-panel">        
+                    <legend class="form-selection-panel-title">Возрастное ограничение</legend>
+                    {% for age_ristriction in all_age_ristrictions %}
+                        <div class="form-selection-panel-item">
+                            <input class="custom-radio" type="radio" name="book_age_restriction" value="{{age_ristriction}}">
+                            <span>{{age_ristriction}}</span> 
+                        </div>
+                    {% endfor %}
+                </fieldset>
+
+                
+                <input class="form-selection-panel-apply" type="submit" name="save_book" value="Сохранить">
         
-        <p>
-            <label for="book_title">Название</label>
-            <input type="text" name="book_title" required>
-        </p>
+            </form>
 
-        <p>
-            <label for="book_author">Автор</label>
-            <input type="text" name="book_author" required>
-        </p>
+            <ul class="home-menu">
+                <li><a class="home-menu-item" href="{% url 'home' %}">На главную</a></li>
+                <li><a class="home-menu-item" href="{% url 'book_list' %}">Все книги</a></li>
+            </ul>
 
-        <p><textarea name="book_discription" cols="30" rows="10" placeholder="Описание" required></textarea></p>
-
-        <label>
-            <p>Жанр</p>
-            {% for book_style in all_book_styles %}
-                <input type="checkbox" name="book_style[]" value="{{book_style}}"><span>{{book_style}}</span><br>
-            {% endfor %}
-        </label>
-
-        <label>
-            <p>Возрастное ограничение</p>
-            {% for age_ristriction in all_age_ristrictions %}
-                <input type="radio" name="book_age_restriction" value="{{age_ristriction}}"><span>{{age_ristriction}}</span> 
-            {% endfor %}
-        </label>
-
-        <p><input type="submit" name="save_book" value="Сохранить"></p>
-
-    </form>
+        </div>
     
-    <p><a href="{% url 'home' %}">На главную</a></p>
-    <p><a href="{% url 'book_list' %}">Все книги</a></p>
+    </div>  <!-- container -->
     
 </body>
 </html>
