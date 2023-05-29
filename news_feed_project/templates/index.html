@@ -1,0 +1,62 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static '/css/style.css' %}">
+    <title>Новостная лента</title>
+</head>
+<body>
+
+    <div class="container">
+        <div class="sections-panel">
+            {% for section in section_list %}
+                {% if section == select_news.section %}
+                    <a class="sections-panel-item-checked" href="{% url 'index' section %}">{{section}}</a>
+                {% else %}
+                    <a class="sections-panel-item" href="{% url 'index' section %}">{{section}}</a>
+                {% endif %}
+            {% endfor %}
+        </div>
+
+        <table class="content">
+            <tr>
+                <td>
+                    <div class="news-details">
+                        {% if select_news %}
+                            <div class="news-details-title">{{select_news.title}}</div>
+                            <div class="news-details-date">{{select_news.pub_date|date:"d.m.Y, H:i"}}</div>
+                            <div class="news-details-photo">
+                                <img width="470" src="{{select_news.photo}}" alt="news_photo">
+                            </div>
+                            <div class="news-details-discription">"{{select_news.discription}}"</div>
+                        {% else %}
+                            <div class="news-details-title">No news</div>
+                        {% endif %}
+                    </div>  <!-- news-details -->
+                </td>
+
+                <td style="vertical-align:top">
+                    <div class="news-panel">
+                        {% if news_list %}
+                            {% for news in news_list %}
+                                <div class="news-panel-item">
+                                    <a class="news-panel-item-title" href="{% url 'index' section_item=select_section news_id=news.id %}">{{news.title}}</a>
+                                    <div class="news-panel-item-date">{{news.pub_date|date:"d.m.Y, H:i"}}</div>
+                                </div>
+                            {% endfor %}
+                        {% else %}
+                            <div class="news-panel-item-title">Нет новостей</div>
+                        {% endif %}
+                    </div>  <!-- news-panel -->
+                </td>
+            </tr>
+        </table>
+
+    </div>  <!-- container -->
+
+</body>
+</html>
