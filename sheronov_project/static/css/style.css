@@ -1,0 +1,124 @@
+
+body {
+    position: relative;     
+    background: url("/static/img/bg_main.png") no-repeat ;
+    background-size: cover;
+}
+.container {
+    margin: auto;
+    width: 900px;
+}
+.main-screen-title {
+    margin: auto;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 50px;
+    text-align: center;    
+    margin-top: 120px;
+    margin-bottom: 120px;
+    width: 500px;
+}
+.main-screen-btn {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 39px;
+    text-align: center;
+    border: 2px solid black;
+    text-decoration: none;
+    color: black;
+    display:inline-block;
+    padding: 30px;
+    width: 36%;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.3);
+}
+.main-screen-btn:hover {
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.6);
+}
+.main-screen-btn-show-notes {
+    margin-left: 120px;
+}
+
+
+
+
+.note-form input {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 30px;
+    padding: 10px;
+    padding-left: 15px;
+    border-radius: 10px;
+    border: 2px solid #000000;
+    margin-right: 19px;
+}
+.note-form textarea {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 30px;
+    padding: 10px;
+    padding-left: 15px;
+    border-radius: 10px;
+    border: 2px solid #000000;
+    display: block;
+    width: 95%;
+    margin-top: 20px;
+}
+.note-form-input-promo {
+    width: 95%;
+    margin-top: 20px;
+}
+.adding-screen-btn-send {
+    margin-top: 20px;
+}
+.adding-screen-title {
+    margin-top: 80px;
+    margin-bottom: 80px;
+}
+.adding-screen-btn-to-home {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 30px;
+    padding: 10px;
+    padding-left: 15px;
+    border: 2px solid #000000;
+    margin-top: 20px;
+}
+
+
+
+
+.check-list-title {
+    margin: auto;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 50px;
+    text-align: center;    
+    width: 500px;
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
+.check-list {
+
+}
+.check-list-item {
+
+}
+.check-list-item-img {
+    width:400px;
+}
+.check-list-item-text {
+    display: inline-block;
+    vertical-align: top;
+}

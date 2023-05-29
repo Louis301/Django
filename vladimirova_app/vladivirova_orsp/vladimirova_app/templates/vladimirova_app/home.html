@@ -1,0 +1,64 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static '/css/style.css' %}">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+
+        <div class="header-title">Тесты по истории России</div>
+        <div class="header-navigation">
+            {% for epoch in epoch_titles %}
+                <a class="header-navigation-item" href="#{{epoch}}">{{ epoch }}</a>
+            {% endfor %}
+        </div>
+
+        <form action="{% url 'home' %}" method="post">
+            {% csrf_token %}
+            {% for epoch_questions in all_questions %}
+                <div class="questions-category">
+                    <div class="questions-category-title" id="{{ epoch_questions.epoch_title }}">Тест: "{{ epoch_questions.epoch_title }}"</div>
+                    
+                    <ol type="1">
+                        {% for question in epoch_questions.questions_list %}
+                            <fieldset class="question">
+                                <li class="question-title">{{ question }}</li>
+                                <div class="question-answers">
+                                    {% for choice in question.choice_set.all %}
+                                        <div class="{{ choice.radiobox_class }}">
+                                            
+                                            <input type="radio" name="{{ epoch_questions.epoch_title }}_{{ question.id }}" value="{{ choice.choice_text }}">
+                                            <span>{{ choice.choice_text }}</span>
+
+                                            {% if choice.radiobox_class == 'answer-wrong' %}
+                                                <img class="answer-icon" src="/static/img/negative_marker.png" alt="" width="30">
+                                            {% elif choice.radiobox_class == 'answer-right' %}
+                                                <img class="answer-icon" src="/static/img/positive_marker.png" alt="" width="30">
+                                            {% endif %}
+                                        
+                                        </div>
+                                    {% endfor %}
+                                    </div>
+                            </fieldset>
+                        {% endfor %}
+                    </ol>   
+
+                    {% if verified_questions_category == epoch_questions.epoch_title %}
+                        <input class="questions-category-button-update" type="submit" name="send_{{ epoch_questions.epoch_title }}" value="Обновить">
+                    {% else %}
+                        <input class="questions-category-button-check" type="submit" name="send_{{ epoch_questions.epoch_title }}" value="Проверить">
+                    {% endif %}
+                    
+                </div>
+            {% endfor %}
+        </form>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static '/css/style.css' %}">
+    <title>Добавление заметки</title>
+</head>
+<body>
+    <div class="container">
+        <div class="main-screen-title adding-screen-title">Новая заметка</div>
+    
+        <form class="note-form" action="{% url 'adding' %}" method="post">
+            {% csrf_token %}
+            <input type="text" name="film_title" placeholder="Название фильма" required>
+            <input type="text" name="film_director" placeholder="Режиссёр" required>
+            <input type="text" name="film_genre" placeholder="Жанр" required>
+            <input class="note-form-input-promo" type="text" name="film_promo" placeholder="URL картинки" required>
+            <textarea type="text" name="film_feedback" rows="4" placeholder="Отзыв" required></textarea>
+
+            <input class="main-screen-btn adding-screen-btn-send " type="submit" name="add_note" value="Сохранить">
+            <a class="main-screen-btn adding-screen-btn-to-home" href="{% url 'main' %}">На главную</a>
+        </form>
+    </div>
+    
+</body>
+</html>

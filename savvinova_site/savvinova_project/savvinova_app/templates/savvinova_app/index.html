@@ -1,0 +1,100 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="{% static '/css/index_styles.css' %}">
+	<title>Savvinova</title>
+</head>
+<body>
+	<div class="inner-body">
+		<section class="navigation">
+			<div class="container">
+				<a class="navigation-item" href="#">Главная</a>
+				<a class="navigation-item" href="{% url 'about' %}">О нас</a>
+				<a class="navigation-item" href="{% url 'program' %}">Программа</a>
+				<a class="navigation-item" href="#application-form">Отправить заявку</a>
+				<a class="navigation-item" href="#contacts">Контакты</a>
+			</div>
+		</section> <!-- navigation -->
+
+		<section class="main">
+			<img src="/static/img/index/main_1.svg" alt="main_bg">
+			<div class="main_content">
+				<div class="container">
+					<span class="main-title-part-1">Онлайн-курс</span>
+					<span class="main-title-part-2">florist</span>
+					<span class="main-title-part-3">pro</span>
+					<span class="main-title-span">Освой профессию флориста и начни зарабатывать через 6 недель</span>
+					<span><a class="main-title-button-to-application-form" href="#application-form">стать флористом</a></span>
+					<span><a class="main-title-button-to-program" href="#">программа-></a></span>
+				</div>
+			</div>	
+		</section>
+
+		<section class="cource-for">
+			<div class="cource-for-title">Кому подойдет курс</div>
+			<table class="cource-for-content">
+				<tr>
+					<td class="cource-for-item cource-for-item-top_left">
+						<img src="/static/img/index/cource_for_1.png" alt="" width="78">
+						<p>Тем, кто хочет сменить работу</p>	
+					</td>
+					<td class="cource-for-item cource-for-item-top_right">
+						<img src="/static/img/index/cource_for_2.png" alt="" width="78">
+						<p>Тем, кто хочет найти прибыльное хобби</p>
+					</td>
+				</tr>
+				<tr>
+					<td class="cource-for-item cource-for-item-bottom_left">
+						<img src="/static/img/index/cource_for_3.png" alt="" width="78">
+						<p>Тем, кто находится в поисках востребованной творческой профессии</p>	
+					</td>
+					<td class="cource-for-item cource-for-item-bottom_right">
+						<img src="/static/img/index/cource_for_4.png" alt="" width="78">
+						<p>Тем, кто сидит в декрете</p>	
+					</td>
+				</tr>
+			</table>
+		</section> <!-- cource-for -->
+	
+		<section class="application-form" id="application-form" >
+			<div class="application-form-title">Оставить заявку на курс</div>
+			<form action="{% url 'index' %}" method="post">
+				{% csrf_token %}
+				<input class="application-form-input" type="text" name="user_name" placeholder="Имя" required>
+				<input class="application-form-input" type="text" name="user_phone" placeholder="Телефон" required>
+				<input class="application-form-input" type="text" name="user_mail" placeholder="Эл. почта" required>
+				<input class="application-form-button" type="submit" name="send" value="Отправить">
+			</form>
+		</section>  <!-- application-form -->
+
+		<section class="contacts" id="contacts">
+			<div class="contacts-part-1">
+				<p>+7(941)333-55-44<br>
+					+7(950)444-55-22<br>
+					florist.online@mail.ru</p>
+				<p>ИП Беликова Екатерина Алексеевна</p>
+			</div>
+			<div class="contacts-part-2">
+				<p><a href="#">Договор оферты</a></p>
+				<p><a href="#">Политика конфиденциальности </a></p>
+				<p><a href="#">Согласие на обработку персональных данных</a></p>
+				<p>
+					<a href="#"><img class="contacts-part-2-image" src="/static/img/index/contacts_1.png" alt=""></a>
+					<a href="#"><img class="contacts-part-2-image" src="/static/img/index/contacts_2.png" alt=""></a>
+					<a href="#"><img class="contacts-part-2-image" src="/static/img/index/contacts_3.png" alt=""></a>
+				</p>
+			</div>
+			<div class="contacts-part-3">
+				<p>Эти красивые растения — одно из лучших творений природы. Они поражают нас тончайшими ароматами, радуют самыми разнообразными оттенками. Они, как и музыка, создают приподнятое настроение.</p>
+				<p>©Все права защищены</p>
+			</div>
+		</section>  <!-- contacts -->
+
+
+	</div> <!-- inner-body -->
+</body>
+</html>

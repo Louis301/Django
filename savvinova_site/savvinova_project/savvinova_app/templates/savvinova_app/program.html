@@ -1,0 +1,128 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static '/css/program_styles.css' %}">
+    <title>Программа</title>
+</head>
+<body>
+    <div class="inner-body">
+
+        <section class="navigation">
+			<div class="container">
+				<a class="navigation-item" href="{% url 'index' %}">Главная</a>
+				<a class="navigation-item" href="{% url 'about' %}">О нас</a>
+				<a class="navigation-item" href="#">Программа</a>
+				<a class="navigation-item" href="http://127.0.0.1:8000/#application-form">Отправить заявку</a>
+				<a class="navigation-item" href="#contacts">Контакты</a>
+			</div>
+		</section> <!-- navigation -->
+
+        <section class="program">
+            <div class="program-title">Программа курса</div>
+            <table>
+                <tr>
+                    <td class="program-item">
+                        <div class="program-item-title">Модуль 1. Что должен знать современный флорист</div>
+                        <div class="program-item-text">
+                            Урок 1. Введение в профессию флорист <br>
+                            Урок 2. Рабочее место флориста <br>
+                            Урок 3. Инструменты и материалы <br>
+                            Урок 4. Правила принятия поставки <br>
+                            Урок 5. Стили во флористике <br>
+                            Урок 6. Иерархия цветов<br>
+                            Урок 7. Архитектура цветка<br>
+                            Урок 8. Вдохновение и креативность <br>
+                        </div>
+                    </td>
+                    <td class="program-item">
+                        <div class="program-item-title">Модуль 2. Базовые навыки современного флориста</div>
+                        <div class="program-item-text">
+                            Урок 1. Техники сборки. Виды букетов <br>
+                            Урок 2. Круглый букет на зелени <br>
+                            Урок 3. Расстановка материала в букете <br>
+                            Урок 4. Раскидистый букет на зелени <br>
+                            Урок 5. Как фотографировать букеты на телефон <br>
+                            Урок 6. Выезд на базу для закупки цветов <br>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="program-item">
+                        <div class="program-item-title">Модуль 3. Учимся работать с букетами</div>
+                        <div class="program-item-text">
+                            Урок 1. Расстановка материала. Пропорции, золотое сечение <br>
+                            Урок 2. Круглый букет <br>
+                            Урок 3. Упаковка круглого букета <br>
+                            Урок 4. Раскидистый букет <br>
+                            Урок 5. Упаковка раскидистого букета <br>
+                            Урок 6. Асимметричная композиция <br>
+                        </div>
+                    </td>
+                    <td class="program-item">
+                        <div class="program-item-title">Модуль 4. Колористика</div>
+                        <div class="program-item-text">
+                            Урок 1. Что такое цвет?! <br>
+                            Урок 2. Колористика — язык эмоций <br>
+                            Урок 3. Цветовой круг Иттена <br>
+                            Урок 4. Характеристики цвета <br>
+                            Урок 5. Контрасты <br>
+                            Урок 6. Гармонические сочетания <br>
+                            Урок 7. Влияние фона <br>
+                            Финальное домашнее задание <br>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="program-item">
+                        <div class="program-item-title">Модуль 5. Учимся работать во флористической студии</div>
+                        <div class="program-item-text">
+                            Урок 1. Система учета цветов. Калькуляция букета <br>
+                            Урок 2. Логистика. Работа с доставкой букетов <br>
+                            Урок 3. Работа с клиентами <br>
+                            Урок 4. Особенности коммерческой фотографии <br>
+                        </div>
+                    </td>
+                    <td class="program-item">
+                        <div class="program-item-title">Бонус модуль. Карьера и бизнес флориста</div>
+                        <div class="program-item-text">
+                            Урок 1. Портфолио и резюме флориста <br>
+                            Урок 2. Бизнес-модель флористической студии <br>
+                            Урок 3. Финансовая модель флористической студии Вебинар. Instagram – как инструмент продвижения для флориста <br>
+                            Вебинар. Как заработать на флористике от 100 тыс. рублей в месяц <br>
+                            Маркетинг <br>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </section> <!-- program -->
+
+        <section class="contacts" id="contacts">
+			<div class="contacts-part-1">
+				<p>+7(941)333-55-44<br>
+					+7(950)444-55-22<br>
+					florist.online@mail.ru</p>
+				<p>ИП Беликова Екатерина Алексеевна</p>
+			</div>
+			<div class="contacts-part-2">
+				<p><a href="#">Договор оферты</a></p>
+				<p><a href="#">Политика конфиденциальности </a></p>
+				<p><a href="#">Согласие на обработку персональных данных</a></p>
+				<p>
+					<a href="#"><img class="contacts-part-2-image" src="/static/img/index/contacts_1.png" alt=""></a>
+					<a href="#"><img class="contacts-part-2-image" src="/static/img/index/contacts_2.png" alt=""></a>
+					<a href="#"><img class="contacts-part-2-image" src="/static/img/index/contacts_3.png" alt=""></a>
+				</p>
+			</div>
+			<div class="contacts-part-3">
+				<p>Эти красивые растения — одно из лучших творений природы. Они поражают нас тончайшими ароматами, радуют самыми разнообразными оттенками. Они, как и музыка, создают приподнятое настроение.</p>
+				<p>©Все права защищены</p>
+			</div>
+		</section>  <!-- contacts -->
+
+    </div>  <!-- inner-body -->
+</body>
+</html>

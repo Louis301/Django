@@ -1,0 +1,81 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static '/css/about_styles.css' %}">
+    <title>О нас</title>
+</head>
+<body>
+    <div class="inner-body">
+
+        <section class="navigation">
+			<div class="container">
+				<a class="navigation-item" href="{% url 'index' %}">Главная</a>
+				<a class="navigation-item" href="#">О нас</a>
+				<a class="navigation-item" href="{% url 'program' %}">Программа</a>
+				<a class="navigation-item" href="http://127.0.0.1:8000/#application-form">Отправить заявку</a>
+				<a class="navigation-item" href="#contacts">Контакты</a>
+			</div>
+		</section> <!-- navigation -->
+
+        <section class="director">
+            <div class="director-title">Екатерина Беликова</div>
+            <div class="director-discription">
+                <p>Одна из ведущих флористов России и Европы.</p>
+                <p>Практикующий преподаватель с сотнями учеников в разных уголках мира.</p>
+                <p>Нестандартный взгляд на цветы, уникальный стиль композиций, западная структурность и сдержанность, восточный шик и плавность линий. </p>
+                <p>Профессиональная работа с крупными формами и сложным пространством, сочетание несочетаемых материалов.</p>
+                <p>Миссия Екатерины вдохновлять флористикой миллионы людей.</p>
+            </div>
+            <img src="/static/img/about/features_1.png" alt="" width="380">
+        </section> <!-- director -->
+
+        <section class="features">
+            <div class="features-item">
+                <div class="features-item-digit">7</div>
+                <p>Выдающихся<br> преподавателей</p>
+            </div>
+            <div class="features-item">
+                <div class="features-item-digit">10+</div>
+                <p>Лет <br>преподавания</p>
+            </div>
+            <div class="features-item">
+                <div class="features-item-digit">1000+</div>
+                <p>Успешных <br>выпускников </p>
+            </div>
+            <div class="features-item">
+                <div class="features-item-digit">10000+</div>
+                <p>Созданных <br>букетов </p>
+            </div>
+        </section>
+
+
+        <section class="contacts" id="contacts">
+			<div class="contacts-part-1">
+				<p>+7(941)333-55-44<br>
+					+7(950)444-55-22<br>
+					florist.online@mail.ru</p>
+				<p>ИП Беликова Екатерина Алексеевна</p>
+			</div>
+			<div class="contacts-part-2">
+				<p><a href="#">Договор оферты</a></p>
+				<p><a href="#">Политика конфиденциальности </a></p>
+				<p><a href="#">Согласие на обработку персональных данных</a></p>
+				<p>
+					<a href="#"><img class="contacts-part-2-image" src="/static/img/index/contacts_1.png" alt=""></a>
+					<a href="#"><img class="contacts-part-2-image" src="/static/img/index/contacts_2.png" alt=""></a>
+					<a href="#"><img class="contacts-part-2-image" src="/static/img/index/contacts_3.png" alt=""></a>
+				</p>
+			</div>
+			<div class="contacts-part-3">
+				<p>Эти красивые растения — одно из лучших творений природы. Они поражают нас тончайшими ароматами, радуют самыми разнообразными оттенками. Они, как и музыка, создают приподнятое настроение.</p>
+				<p>©Все права защищены</p>
+			</div>
+		</section>  <!-- contacts -->
+        
+    </div> <!-- inner-body -->
+</body>
+</html>
