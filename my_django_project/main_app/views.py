@@ -1,23 +1,9 @@
 from django.shortcuts import render
 from main_app.models import Book
-from django.http import HttpResponseRedirect
-from django.urls import reverse
 
 
-all_book_styles = [
-    'Историческая',
-    'Военная',
-    'Научная фантастика',
-    'Художественная',
-    'Образование'
-]
-
-all_age_ristrictions = [
-    '6+',
-    '12+',
-    '16+',
-    '18+'
-]
+all_book_styles = [ 'Историческая', 'Военная', 'Научная фантастика', 'Художественная', 'Образование' ]
+all_age_ristrictions = [ '6+', '12+', '16+', '18+' ]
 
 
 #----------------------------------------------------------------------------------------------------
@@ -37,7 +23,12 @@ def add_book(request):
             age_restriction = request.POST.get('book_age_restriction')
         )
 
-    return render(request, 'add_book.html', context={ 'all_book_styles' : all_book_styles, 'all_age_ristrictions' : all_age_ristrictions } )
+    context = { 
+        'all_book_styles' : all_book_styles, 
+        'all_age_ristrictions' : all_age_ristrictions 
+    }
+
+    return render(request, 'add_book.html', context)
 
 
 #----------------------------------------------------------------------------------------------------
@@ -62,6 +53,7 @@ def checking_age_ristriction_book(selected_age_restriction, book_age_restriction
 #----------------------------------------------------------------------------------------------------
 def show_book_list(request):
     book_list = Book.objects.all()
+    context = None
 
     if request.POST.get('apply_filters') == 'Применить':
         selected_book_styles = request.POST.getlist('book_style[]')
@@ -73,15 +65,29 @@ def show_book_list(request):
                 book_id_set.add(book.id)
         
         book_list = Book.objects.filter(id__in=book_id_set)
-        return render(request, 'book_list.html', context={ 'book_list' : book_list, 'all_book_styles' : all_book_styles, 'all_age_ristrictions' : all_age_ristrictions, 'selected_book_styles' : selected_book_styles, 'selected_age_restriction' : selected_age_restriction })
+
+        context = { 
+            'book_list' : book_list, 
+            'all_book_styles' : all_book_styles, 
+            'all_age_ristrictions' : all_age_ristrictions, 
+            'selected_book_styles' : selected_book_styles, 
+            'selected_age_restriction' : selected_age_restriction 
+        }
     
     elif request.POST.get('apply_filters') == 'Сброс' or request.POST.get('apply_filters') == None:
-        return render(request, 'book_list.html', context={ 'book_list' : book_list, 'all_book_styles' : all_book_styles, 'all_age_ristrictions' : all_age_ristrictions})
+        context = { 
+            'book_list' : book_list, 
+            'all_book_styles' : all_book_styles, 
+            'all_age_ristrictions' : all_age_ristrictions
+        }
+    
+    return render(request, 'book_list.html', context)
 
 
 #----------------------------------------------------------------------------------------------------
 def edit_book(request, book_id):
     book_for_edit = Book.objects.get(id=book_id)
+
     selected_book_styles = book_for_edit.style.split(", ")
 
     if request.POST.get('edit_book') != None:
@@ -91,14 +97,38 @@ def edit_book(request, book_id):
         book_for_edit.style =           style =           ', '.join(request.POST.getlist('book_style[]'))
         book_for_edit.age_restriction = age_restriction = request.POST.get('book_age_restriction')
 
-        Book.objects.filter(id=book_id).update(title=title, author=author, discription=discription, style=style, age_restriction=age_restriction)
+        Book.objects.filter(id=book_id).update(
+            title=title, 
+            author=author, 
+            discription=discription, 
+            style=style, 
+            age_restriction=age_restriction
+        )
+        
         book_for_edit = Book.objects.get(id=book_id)
+        
         selected_book_styles = book_for_edit.style.split(", ")
 
-    return render(request, 'edit_book.html', context={ 'book_for_edit' : book_for_edit, 'all_book_styles' : all_book_styles, 'all_age_ristrictions' : all_age_ristrictions, 'selected_book_styles' : selected_book_styles })
+        context = { 
+            'book_for_edit' : book_for_edit, 
+            'all_book_styles' : all_book_styles, 
+            'all_age_ristrictions' : all_age_ristrictions, 
+            'selected_book_styles' : selected_book_styles 
+        }
+
+    return render(request, 'edit_book.html', context)
 
 
 #----------------------------------------------------------------------------------------------------
 def delete_book(request, book_id):
     Book.objects.get(id=book_id).delete() 
-    return render(request, 'book_list.html', context={ 'book_list' : Book.objects.all(), 'all_book_styles' : all_book_styles, 'all_age_ristrictions' : all_age_ristrictions})
+
+    context = { 
+        'book_list' : Book.objects.all(), 
+        'all_book_styles' : all_book_styles, 
+        'all_age_ristrictions' : all_age_ristrictions
+    }
+
+    return render(request, 'book_list.html', context)
+
+

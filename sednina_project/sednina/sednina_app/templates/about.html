@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static '/css/about.css' %}">
+    <title>О нас</title>
+</head>
+<body>
+        <header>
+            <div class="container">
+                <div class="logo">
+                    <h2>Plants</h2>
+                </div>
+                <div class="navigation">
+                    <a class="navigation-item" href="{% url 'home' %}">Главная</a>
+                    <a class="navigation-item" href="{% url 'products' %}">Товары</a>
+                    <a class="navigation-item" href="{% url 'about' %}">О нас</a>
+                    <a class="navigation-item" href="{% url 'order' %}">
+                        <img src="/static/img/image 1.png" alt="image 1">
+                    </a>
+                </div>       
+            </div>  <!-- container -->
+        </header>  <!-- home-header -->
+
+        
+        <section class="about">
+            <div class="container">
+                <div class="about-text">
+                    <h2>О нас</h2>
+                    <p>Мы хотим стать для вас местом, где вы поймете, что выращивание комнатных растений простой процесс, который не требует много сил и специфических знаний.</p>
+                    <p>У нас работают люди, которые сами выращивают растения и способны дать консультацию по любому вопросу, связанному с уходом за растением.
+                        Мы думаем не только о том, как продать вам новое растение, мы думаем, как его органично вписать в ваш быт, квартиру, вашу занятость. И если поймём, что этот цветок вам не подходит, то честно скажем вам об этом. 
+                        А вы сами уже примете решение.</p>
+                    <p>Мы поняли, что наличие цветов в доме способствует повышению качества жизни и уровню счастья человека, и теперь хотим поделиться этим знанием с вами.
+                        Для нас самым главным оказался тот факт, что зелёные друзья оказывают влияние на эмоциональное состояние.
+                        Растения дома помогают снизить стресс и усталость, а также повысить продуктивность и реализовать свой потенциал. Они поднимают настроение и помогают нам чувствовать себя более расслабленными и защищенными.</p>
+                </div>
+                <img class="about-image" src="/static/img/about_image.png" alt="about_image">
+            </div> <!-- container -->
+        </section>  <!-- about -->
+
+        <footer>
+            <div class="container">
+                <div class="logo">
+                    <h2>Plants</h2>
+                    <span>© 2023. Все права защищены<br>
+                        <a href="#">Политика конфиденциальности</a>
+                    </span>
+                </div>
+                <div class="navigation">
+                    <a class="navigation-item" href="{% url 'home' %}">Главная</a>
+                    <a class="navigation-item" href="{% url 'products' %}">Товары</a>
+                    <a class="navigation-item" href="{% url 'about' %}">О нас</a>
+                    <div class="navigation-msgs">
+                        <a href="#"><img class="navigation-msgs-item" src="/static/img/msg_1.png" alt="msg_1"></a>
+                        <a href="#"><img class="navigation-msgs-item" src="/static/img/msg_2.png" alt="msg_2"></a>
+                        <a href="#"><img class="navigation-msgs-item" src="/static/img/msg_3.png" alt="msg_3.png"></a>
+                    </div>
+                </div>  
+            </div> <!-- container -->
+        </footer>  <!-- footer -->
+    
+</body>
+</html>

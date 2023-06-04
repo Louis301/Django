@@ -53,3 +53,5 @@ def home(request):
     }
 
     return render(request, 'vladimirova_app/home.html/', context)
+
+

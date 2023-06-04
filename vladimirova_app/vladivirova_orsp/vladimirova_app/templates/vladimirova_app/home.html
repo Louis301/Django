@@ -50,9 +50,13 @@
                     </ol>   
 
                     {% if verified_questions_category == epoch_questions.epoch_title %}
-                        <input class="questions-category-button-update" type="submit" name="send_{{ epoch_questions.epoch_title }}" value="Обновить">
+                        <div class="questions-category-button-update">
+                            <input type="submit" name="send_{{ epoch_questions.epoch_title }}" value="Обновить">
+                        </div>
                     {% else %}
-                        <input class="questions-category-button-check" type="submit" name="send_{{ epoch_questions.epoch_title }}" value="Проверить">
+                        <div class="questions-category-button-check">
+                            <input type="submit" name="send_{{ epoch_questions.epoch_title }}" value="Проверить">
+                        </div>
                     {% endif %}
                     
                 </div>

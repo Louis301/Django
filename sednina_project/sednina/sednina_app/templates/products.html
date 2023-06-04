@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static '/css/products.css' %}">
+    <title>Товары</title>
+</head>
+<body>
+        <header>
+            <div class="container">
+                <div class="logo">
+                    <h2>Plants</h2>
+                </div>
+                <div class="navigation">
+                    <a class="navigation-item" href="{% url 'home' %}">Главная</a>
+                    <a class="navigation-item" href="{% url 'products' %}">Товары</a>
+                    <a class="navigation-item" href="{% url 'about' %}">О нас</a>
+                    <a class="navigation-item" href="{% url 'order' %}">
+                        <img src="/static/img/image 1.png" alt="image 1">
+                    </a>
+                </div>       
+            </div>  <!-- container -->
+        </header>  <!-- home-header -->
+
+        <section class="products">
+            <div class="container">
+                {% for category in categories %}
+                    <div class="products-category">
+                        <div class="products-category-title">{{category}}</div>
+                        {% for product in all_products %}
+                            {% if product.category == category %} 
+                                <div class="product">
+                                    <img src="/static/img/products/{{product.image}}.png/" alt="{{product.image}}" height="202">
+                                    <h2>{{product.title}}</h2>
+                                    <p>{{product.price}} р.</p>
+
+                                    <form action="{% url 'products' %}" method="post">
+                                        {% csrf_token %}
+                                        <input type='hidden' name="product_title" value="{{product.title}}"/>
+                                        <input class="product-expend-order-button" type="submit" name="expend_order" value="В корзину">
+                                    </form>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+            </div> <!-- container -->
+        </section>  <!-- products -->
+
+
+        <footer>
+            <div class="container">
+                <div class="logo">
+                    <h2>Plants</h2>
+                    <span>© 2023. Все права защищены<br>
+                        <a href="#">Политика конфиденциальности</a>
+                    </span>
+                </div>
+                <div class="navigation">
+                    <a class="navigation-item" href="{% url 'home' %}">Главная</a>
+                    <a class="navigation-item" href="{% url 'products' %}">Товары</a>
+                    <a class="navigation-item" href="{% url 'about' %}">О нас</a>
+                    <div class="navigation-msgs">
+                        <a href="#"><img class="navigation-msgs-item" src="/static/img/msg_1.png" alt="msg_1"></a>
+                        <a href="#"><img class="navigation-msgs-item" src="/static/img/msg_2.png" alt="msg_2"></a>
+                        <a href="#"><img class="navigation-msgs-item" src="/static/img/msg_3.png" alt="msg_3.png"></a>
+                    </div>
+                </div>  
+            </div> <!-- container -->
+        </footer>  <!-- footer -->
+
+</body>
+</html>

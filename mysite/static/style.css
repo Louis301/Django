@@ -1,0 +1,11 @@
+
+body {
+    background: url("/static/bg.jpg");
+    color: floralwhite;
+}
+
+a {
+    color: floralwhite;
+    text-decoration: none;
+    text-transform: uppercase;
+}

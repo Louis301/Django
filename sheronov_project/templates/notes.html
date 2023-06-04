@@ -9,7 +9,7 @@
     <title>Мои заметки</title>
 </head>
 <body>
-    <div class="container">
+    <div class="container notes-container">
         <div class="check-list-title">Чек-лист</div>
 
         <section class="check-list">
@@ -18,18 +18,18 @@
                     <img class="check-list-item-img" src="{{note.promo}}" alt="promo">
                     <div class="check-list-item-text">
                         <h2>{{note.title}}</h2>
-                        <p>{{note.director}}</p>
-                        <p>{{note.genre}}</p>
-                        <p>{{note.feedback}}</p>
+                        <p><b>Режиссёр: </b>{{note.director}}</p>
+                        <p><b>Жанр: </b>{{note.genre}}</p>
+                        <p><b>Мнение: </b>"{{note.feedback}}"</p>
                     </div>
                 </div>
             {% endfor %}
+            <a class="main-screen-btn adding-screen-btn-to-home" href="{% url 'main' %}">На главную</a>
         </section>
-
-        <a href="{% url 'main' %}">На главную</a>
-
         
     </div><!-- container -->
 </body>
 </html>
+
+
 

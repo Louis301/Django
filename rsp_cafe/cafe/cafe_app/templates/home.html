@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	{% load static %}
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="{% static '/style.css' %}">
+	<title>Кафе</title>
+</head>
+
+<body>
+	<section class="home-main">
+		<div class="opacity">
+			<div class="navigation">
+				<a class="navigation-about" href="#about">О нас</a>
+				<a class="navigation-menu" href="#menu">Меню</a>
+				<a class="navigation-work_schedule" href="#work_schedule">График работы</a>
+				<a class="navigation-phone" href="#">+7 (999) 888-77-66</a>
+			</div>
+			<h1>Семейное кафе<br> в центре города</h1>
+			<p>Уголок кулинарного<br> наслаждения</p>
+			<div class="home-main-btn"><a href="#menu">Меню</a></div>
+		</div>
+	</section>
+
+	<section class="about" id="about">
+		<p>В нашем кафе вы можете хорошо провести время, насладиться вкуснейшей едой и запастись впечатлениями. Наша цель - ваше удовольствие и комфорт, поэтому мы делаем все с заботой и любовью к нашим гостям.</p>
+	</section>
+
+	<section class="features">
+		<table class="features-content">
+			<tr>
+				<td class="features-item">
+					<h2>5</h2>
+					<p>лет опыта</p>
+				</td>
+				<td class="features-item">
+					<h2>10.000+</h2>
+					<p>довольных клиентов</p>
+				</td>
+				<td class="features-item">
+					<h2>10</h2>
+					<p>наград</p>
+				</td>
+			</tr>
+		</table>
+	</section>
+
+	<section class="menu" id="menu">
+		<div class="menu-content">
+			<h2 class="menu-title">Первые блюда</h2>
+			{% for dish in first_courses %}
+				<div class="menu-item">
+					<img src="/static/img/{{dish.title}}.png" alt="(dish)">
+					<p>{{dish.title}}</p>
+					<p>{{dish.price}} руб.</p>
+				</div>
+			{% endfor %}
+
+			<h2 class="menu-title">Салаты</h2>
+			{% for dish in salads %}
+				<div class="menu-item">
+					<img src="/static/img/{{dish.title}}.png" alt="(dish)">
+					<p>{{dish.title}}</p>
+					<p>{{dish.price}} руб.</p>
+				</div>
+			{% endfor %}
+
+			<h2 class="menu-title">Напитки</h2>
+			{% for dish in drinks %}
+				<div class="menu-item">
+					<img src="/static/img/{{dish.title}}.png" alt="(dish)">
+					<p>{{dish.title}}</p>
+					<p>{{dish.price}} руб.</p>
+				</div>
+			{% endfor %}
+		</div>
+	</section>
+
+	<section class="work_schedule" id="work_schedule">
+		<p>График работы</p>
+		<p>ПН-ЧТ<br>12.00 - 23.00</p>
+		<p>ПТ-ВС<br>12.00 - 2.00</p>
+		<div class="menu-invitation">Ждем Вас в гости! ;)</div>
+	</section>
+
+	<section class="contacts">
+		<div class="contacts-content">
+			<table>
+				<tr>
+					<td class="contacts-info">
+						<h2>Контакты</h2>
+						<p>+7 (999) 888-77-66</p>
+						<p>г. Иваново, <br>пр-кт Ленина, 1</p>
+						<div class="home-main-btn contacts-btn"><a href="#menu">Меню</a></div>
+					</td>
+					<td class="contacts-info">
+						<img class="contacts-info-img" src="/static/img/map.png" alt="">
+					</td>
+				</tr>
+			</table>
+		</div>
+	</section>
+
+</body>
+</html>

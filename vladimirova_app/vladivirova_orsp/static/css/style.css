@@ -35,7 +35,7 @@ body {
     margin-bottom: 10px;
 }
 .header-navigation-item:hover {
-    border-left: 2px solid black; 
+    color: gray;
 }
 
 .questions-category {
@@ -55,27 +55,37 @@ body {
     margin-top: 10px;
     margin-bottom: 12px;
 }
+
+
 .questions-category-button-update {
+    width: 150px;
+    margin: auto;
+}
+.questions-category-button-update input {
     color: white;
     background-color: #453737;
     font-size: 16px;
     padding: 12px 20px 12px 20px;
-    text-transform: uppercase;
-    margin-left: 350px;
+    text-transform: uppercase;    
 }
-.questions-category-button-update:hover {
+.questions-category-button-update input:hover {
     background-color: gray;
     cursor: pointer;
 }
+
+
 .questions-category-button-check {
+    width: 150px;
+    margin: auto;
+}
+.questions-category-button-check input {
     color: white;
     background-color: #881515;
     font-size: 16px;
     padding: 12px 20px 12px 20px;
     text-transform: uppercase;
-    margin-left: 350px;
 }
-.questions-category-button-check:hover {
+.questions-category-button-check input:hover {
     cursor: pointer;
 }
 
@@ -87,12 +97,6 @@ fieldset {
 li {
     list-style-type: none;
 }
-/* .answer-right {
-    background: green;
-}
-.answer-wrong {
-    background: red;
-} */
 .answer-inactive {
     background: white;
 }

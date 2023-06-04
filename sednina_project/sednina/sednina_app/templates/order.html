@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static '/css/order.css' %}">
+    <title>Корзина</title>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h2>Plants</h2>
+            </div>
+            <div class="navigation">
+                <a class="navigation-item" href="{% url 'home' %}">Главная</a>
+                <a class="navigation-item" href="{% url 'products' %}">Товары</a>
+                <a class="navigation-item" href="{% url 'about' %}">О нас</a>
+                <a class="navigation-item" href="{% url 'order' %}">
+                    <img src="/static/img/image 1.png" alt="image 1">
+                </a>
+            </div>       
+        </div>  <!-- container -->
+    </header>  <!-- home-header -->
+
+    <section class="order">
+        <div class="container">
+            <h2 class="order-title">Корзина</h2>
+            <table class="order-table">
+                <tr>
+                    <td></td>
+                    <td class="product-title"><b>Товар</b></td>
+                    <td class="product-price"><b>Цена</b></td>
+                </tr>   
+                {% if order %}
+                    {% for product in order %}
+                        <tr>
+                            <td class="product order-image"><img src="/static/img/products/{{product.image}}.png" alt="{{product.image}}"></td>
+                            <td class="product product-title">{{product.title}}</td>
+                            <td class="product product-price">{{product.price}} р.</td>
+                        </tr>    
+                    {% endfor %}
+                {% endif %}
+                <tr>
+                    <td></td>
+                    <td class="total-text">Итого:</td>
+                    <td class="total">{{total_order}} р.</td>
+                </tr>   
+            </table>
+            <!-- openModal - id модального окна (элемента div) -->
+            <div class="order-btn">
+                <a href="#openModal">Оформить заказ</a>
+            </div>
+
+            <div id="openModal" class="modal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title">Оформлен</h3>
+                        <a href="#close" title="Close" class="close">×</a>
+                    </div>
+                    <div class="modal-body">    
+                        <p>Заказ на {{total_order}} рублей.</p>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- container -->
+    </section> <!-- order -->
+
+
+    <footer>
+        <div class="container">
+            <div class="logo">
+                <h2>Plants</h2>
+                <span>© 2023. Все права защищены<br>
+                    <a href="#">Политика конфиденциальности</a>
+                </span>
+            </div>
+            <div class="navigation">
+                <a class="navigation-item" href="{% url 'home' %}">Главная</a>
+                <a class="navigation-item" href="{% url 'products' %}">Товары</a>
+                <a class="navigation-item" href="{% url 'about' %}">О нас</a>
+                <div class="navigation-msgs">
+                    <a href="#"><img class="navigation-msgs-item" src="/static/img/msg_1.png" alt="msg_1"></a>
+                    <a href="#"><img class="navigation-msgs-item" src="/static/img/msg_2.png" alt="msg_2"></a>
+                    <a href="#"><img class="navigation-msgs-item" src="/static/img/msg_3.png" alt="msg_3.png"></a>
+                </div>
+            </div>  
+        </div> <!-- container -->
+    </footer>  <!-- footer -->
+</body>
+</html>

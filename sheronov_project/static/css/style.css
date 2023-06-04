@@ -108,12 +108,13 @@ body {
     width: 500px;
     margin-top: 60px;
     margin-bottom: 60px;
+    padding-top: 40px;
 }
 .check-list {
-
+    padding-left: 100px;
 }
 .check-list-item {
-
+    margin-bottom: 40px;
 }
 .check-list-item-img {
     width:400px;
@@ -121,4 +122,17 @@ body {
 .check-list-item-text {
     display: inline-block;
     vertical-align: top;
+    margin-left: 60px;
+}
+.check-list-item-text h2 {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 30px;
+}
+.notes-container {
+    background-color: #D9D9D9;
+    width: 1200px;
+    padding-bottom: 60px;
 }
