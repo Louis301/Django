@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <style>
+        body {
+            background-color: #494949;
+            margin: 0;
+        }
+        .container {
+            margin: auto;
+            width: 647px;
+            padding: 50px 90px 100px 90px;
+            background-color: white;
+        }
+        h1 {
+            margin: 0;
+            font-size: 48px; 
+            margin-bottom: 54px;
+        }
+        .add_field {
+            width: 400px;
+            padding: 10px 15px 10px 15px;
+            border-radius: 3px;
+            border: 1px solid black;
+        }
+        .add_btn {
+            padding: 10px 15px 10px 15px;
+            color: white;
+            background-color: #1E1E1E;
+            margin-left: 30px;
+
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 19px;
+            text-transform: uppercase;
+
+            margin-bottom: 45px;
+        }
+        .add_btn:hover {
+            color: #1E1E1E;
+            background-color: white;
+            border: 2px solid black;
+            cursor: pointer;
+        }
+        li {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 24px;
+            line-height: 29px;
+            list-style-type: none;
+        }
+        ul {
+            padding-top: 30px;
+            padding-left: 0;
+            border-top: 1px solid black;
+        }
+        li p {
+            display: inline-block;
+            margin: 0;
+            margin-bottom: 10px;
+        }
+        li form {
+            display: inline-block;
+        }
+        .delete_btn {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 19px;
+            text-transform: uppercase;
+            background-color: white;
+            /* border: 1px solid #1E1E1E; */
+            border: none;
+            margin-left: 20px;
+        }
+        .delete_btn:hover {
+            /* color: white; */
+            /* background-color: #1E1E1E; */
+            border: 1px solid #1E1E1E;
+            cursor: pointer;
+        }
+    </style>
+
+    <section class="container">
+        <h1>To Do <br>list</h1>
+
+        <form action="/addTodoItem/" method = "post">{% csrf_token %}
+            <input class="add_field" type="text" name="content">
+            <input class="add_btn" type="submit" value="Add Todo Item">
+        </form> 
+
+        <ul>
+            {% for i in all_items %} 
+            <li>
+                <p>{{i.content}}</p>
+                <form action="/deleteTodoItem/{{i.id}}/" method = "post">{% csrf_token %}
+                    <input class="delete_btn" type="submit" value="Delete">
+                </form>  
+            </li>
+            {% endfor %}
+        </ul>
+    </section> 
+    
+</body>
+</html>
