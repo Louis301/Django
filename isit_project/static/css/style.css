@@ -1,0 +1,100 @@
+
+/* Обычный */
+@font-face {
+	font-family: 'Inter'; 
+	src: local('Inter'), url(/static/fonts/Inter-Regular.ttf); 
+}
+
+
+body {
+    font-family: 'Inter';
+    margin: 0px;
+    background-color: #000;
+}
+.left_panel {
+    background: #000;
+    width: 355px;
+    padding: 15px;
+    margin: 0;
+    height: 100vh;
+    vertical-align: top;
+}
+
+.start-screen-title {
+    font-size: 26px;
+    margin-left: 22px;
+    margin-top: 36px;
+    margin-bottom: 51px;
+}
+.start-screen-title-light_part {
+    color: #D9D9D9;
+}
+.start-screen-title-dark_part {
+    color: #4B4B4B;
+}
+
+.generate_code-form textarea {
+    padding: 22px;
+    border-radius: 5px;
+    background: #fff;
+    height: 335px;
+    flex-shrink: 0;
+    color: #4B4B4B;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    width: 235px;
+}
+.generate_code-form input {
+    color: #00CC08;
+    font-size: 22px;
+    background-color: #000;
+    padding: 8px 20px;
+    border: 2px solid #00CC08;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 29px;
+    
+    width: 100%;
+}
+.generate_code-form input:hover {
+    border: 2px solid #4B4B4B;
+    color: #4B4B4B;
+}
+
+.download_code-btn {
+    text-align: center;
+}
+
+.download_code-btn a {
+    position: relative;
+    color: #D9D9D9;
+    font-size: 19px;
+    text-decoration: none;
+    top: 20px;
+}
+
+.frame_page {
+    vertical-align: center;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    background-color: #C8C8C8;
+}
+iframe {
+    text-align: center;
+    width: 100%;
+    height: 100vh;
+}
+
+.frame_page p {
+    font-family: 'Inter';
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    color: #000;
+}
+.frame_page p em {
+    color: #00A407;
+}

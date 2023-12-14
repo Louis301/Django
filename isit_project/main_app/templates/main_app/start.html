@@ -1,0 +1,40 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>isit_project</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+    <table>
+        <tr>
+            <td class="left_panel">
+                <h1 class="start-screen-title">
+                    <div class="start-screen-title-light_part">PAGE_</div>
+                    <div class="start-screen-title-dark_part">GEN</div>
+                </h1>
+                <form class="generate_code-form" method="post" action="{% url 'start' %}">
+                    {% csrf_token %}
+                    <textarea name="page_discription" cols="30" rows="10" placeholder="describe the page...">{{page_discription}}</textarea>
+                    <input type="submit" name="generate_code" value="generate code">
+                </form>
+                <div class="download_code-btn">
+                    <a href="{% static 'page.html' %}" download>download</a>
+                </div>
+            </td>
+            <td class="frame_page">
+                {% if page_discription %}
+                    <iframe src="{% static 'page.html' %}" frameborder="1"></iframe>
+                {% else %}
+                    <p>your page <em>will be</em> here</p>
+                {% endif %}
+            </td>
+        </tr>
+    </table>
+
+</body>
+</html>
